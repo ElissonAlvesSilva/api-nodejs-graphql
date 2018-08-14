@@ -26,5 +26,24 @@ const BookCreateType = new GraphQLInputObjectType({
     }
 });
 
+const BookUpdateType = new GraphQLInputObjectType({
+    name: 'BookUpdateType',
+    description: 'Update existing book with id',
+    type: BookType,
+    fields: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        author: { type: new GraphQLNonNull(GraphQLString) }
+    }
+});
 
-module.exports = { BookType, BookCreateType }
+const BookDeleteType = new GraphQLInputObjectType({
+    name: 'BookDeleteType',
+    description: 'Delete existing book with id',
+    type: BookType,
+    fields: {
+        id: { type: new GraphQLNonNull(GraphQLString) }
+    }
+});
+
+module.exports = { BookType, BookCreateType, BookUpdateType, BookDeleteType }
